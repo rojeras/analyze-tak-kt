@@ -13,13 +13,13 @@ dependencies {
 }
 
 plugins {
-    kotlin("jvm") version "1.6.20"
+    kotlin("jvm") version "1.7.0"
     application
-    kotlin("plugin.serialization").version("1.6.21")
+    kotlin("plugin.serialization").version("1.7.0")
 }
 
-group = "org.example"
-version = "1.0-SNAPSHOT"
+group = "se.skoview"
+version = "0.1.0"
 
 repositories {
     mavenCentral()

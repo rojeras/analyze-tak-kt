@@ -23,27 +23,14 @@ val url: String = "https://integrationer.tjansteplattform.se/tpdb/tpdbapi.php/ap
 
 suspend fun main() {
     runBlocking {
-        val client = HttpClient(CIO) {
-            install(ContentNegotiation) {
-                json(
-                    Json {
-                        prettyPrint = true
-                        isLenient = true
-                    }
-                )
-            }
+
+        val connectionPointList = ConnectionPoint.load()
+
+        for (cp in connectionPointList) {
+            val id = cp.id
+            println("$id ${cp.platform}-${cp.environment}")
         }
-        val response: HttpResponse = client.get(url)
-        println(response.status)
-        val contractList: List<Contract> = response.body()
-        for (contract in contractList) {
-            val nLast = contract.namespace.takeLast(1)
-            val nMajor = contract.major.toString()
-            if (nLast != nMajor) {
-                println(contract.namespace)
-                println(contract.major)
-            }
-        }
-        client.close()
+
+        // client.close()
     }
 }

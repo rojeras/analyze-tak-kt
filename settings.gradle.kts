@@ -1,3 +1,3 @@
 
-rootProject.name = "ktor-client-sample"
+rootProject.name = "analyze-tak-kt"
 
